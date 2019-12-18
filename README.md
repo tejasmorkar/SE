@@ -7,3 +7,6 @@ Programs for all SE lab assignments
 
 + [Micro Processor Lab](./ml/)
 
+---
+
+> Made by - [@tejasmorkar](https://github.com/tejasmorkar)
