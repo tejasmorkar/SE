@@ -33,7 +33,5 @@ section .text
 	 	PRINT msg1, msg1_len
 	 	PRINT msg2, msg2_len
 	 	PRINT msg3, msg3_len
-	 	
-	 	PRINT br, br_len
  		EXIT
 
