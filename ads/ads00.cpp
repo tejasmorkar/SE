@@ -1,3 +1,5 @@
+// This getting started assignment is taken from https://github.com/SuyashSonawane/ADSL which is maintained by @suyashsonawane
+
 #include <iostream>
 
 using namespace std;
