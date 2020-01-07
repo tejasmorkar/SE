@@ -63,11 +63,8 @@ void Lines::draw_line(float x1, float y1, float x2, float y2)
 	{ 
 		putpixel(floor(x), floor(y), WHITE);
 
-		// Add slope to increment angle formed 
 		slope_error_new += m_new; 
 
-		// Slope error reached limit, time to 
-		// increment y and update slope error. 
 		if (slope_error_new >= 0) 
 		{ 
 		 y++; 
