@@ -107,5 +107,8 @@ section .text
  			MOV al, [rsi]
  			MOV [rdi], al
  			INC rsi
- 			INC 
+ 			INC rdi
+ 			DEC rcx
+ 			JNZ nxt
+ 		ret
 

@@ -51,7 +51,7 @@ section .text
 		PRINT br, br_len
 		MOV rsi, sblock
 		MOV rdi, dblock
-		transfer_block
+		CALL transfer_block
 		
 		PRINT msg2, msg2_len
 		PRINT msg3, msg3_len
