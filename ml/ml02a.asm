@@ -49,6 +49,9 @@ section .text
 		CALL display_block
 		
 		PRINT br, br_len
+		MOV rsi, sblock
+		MOV rdi, dblock
+		transfer_block
 		
 		PRINT msg2, msg2_len
 		PRINT msg3, msg3_len
@@ -96,5 +99,16 @@ section .text
  			DEC rcx
  			JNZ next_digit
  			PRINT char_ans, 2
+ 		ret
+ 	
+ 	transfer_block:
+		MOV rcx, 5
+		nxt:
+ 			MOV al, [rsi]
+ 			MOV [rdi], al
+ 			INC rsi
+ 			INC rdi
+ 			DEC rcx
+ 			JNZ nxt
  		ret
 
