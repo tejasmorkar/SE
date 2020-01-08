@@ -16,12 +16,12 @@ class Dictionary
         node* getRoot();
         void create(string, string);
         node* add(node*, node*);
+        void displayInorder(node*);
+        void displayRevInorder(node*);
         void del(string);
         void update(string);
         void search(string);
         void sort(string);
-        void displayInorder(node*);
-        void displayRevInorder(node*);
         void maxComp(string);
 };
 
@@ -43,12 +43,10 @@ void Dictionary::create(string k, string m)
     nn->ln = NULL;
     nn->rn = NULL;
     
-    if(root == NULL)
-    {
-        root = nn;
-    }
-    else
-   	    add(root, nn);
+   	add(root, nn);
+   	
+   	if(root == NULL)
+   		root = nn;
 }
 
 node* Dictionary::add(node *temp, node *nn)
@@ -59,13 +57,13 @@ node* Dictionary::add(node *temp, node *nn)
     }
     else
     {
-        if(nn->keyword.compare(temp->keyword) < 0)
+        if(nn->keyword < temp->keyword)
         {
-            temp->ln = add(temp->ln, nn);
+            temp->ln = add(temp, nn);
         }
-        else if (nn->keyword.compare(temp->keyword) > 0)
+        else if (nn->keyword > temp->keyword)
         {
-            temp->rn = add(temp->rn, nn);
+            temp->rn = add(temp, nn);
         }
         else
         {
@@ -80,7 +78,7 @@ void Dictionary::displayInorder(node *cn)
     if(cn != NULL)
     {
         displayInorder(cn->ln);
-        cout << cn->keyword << ": " << cn->meaning << endl;
+        cout << cn->keyword << ": " << cn->meaning;
         displayInorder(cn->rn);
     }
 }
