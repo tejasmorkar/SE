@@ -38,14 +38,75 @@ section .text
 	 global _start
 	 _start:
 	 	PRINT msg0, msg0_len
-	 	PRINT msg1, msg1_len
-	 	PRINT msg2, msg2_len
-	 	PRINT msg3, msg3_len
-	 	PRINT msg4, msg4_len	
+	 	
+	 	PRINT msg1, msg1_len	 	
+	 	mov rsi,sblock
+		call _display
+
+		PRINT msg2, msg2_len
+		mov rsi,dblock-2
+		call _display
+		call block_transfer
+		
+		PRINT msg3, msg3_len
+		mov rsi,sblock
+		call _display
+
+		PRINT msg4, msg4_len
+		mov rsi,dblock-2
+		call _display
 	 	
 	 	PRINT br, br_len
  		EXIT
  		
 	_display:
+		mov rbp,5
+		next_num:
+			mov al,[rsi]
+			push rsi
+			call display
+			pop rsi
+			inc rsi
+			dec rbp
+			jnz next_num
+		PRINT br, br_len
+		ret
+
+		display:
+			mov rbx,16
+			mov rcx,2
+			mov rsi,char_ans+1
+
+		cnt:
+			mov rdx,0
+			div rbx
+			cmp dl,09h
+			jbe add30
+			add dl,07h
+
+		add30:
+			add dl,30h
+			mov [rsi],dl
+			dec rsi
+			dec rcx
+			jnz cnt
+			PRINT char_ans,2
+			ret
+
+		block_transfer:
+		 	mov rsi,sblock+4
+		 	mov rdi,dblock+2
+		 	mov rcx,5
+		 
+			back:
+		 	;mov al,[rsi]
+		 	;mov [rdi],al
+		 	;dec rsi
+		 	;dec rdi
+		 	;dec rcx
+		 	;jnz back
+		 	STD
+		 	REP MOVSB
+		ret
  		
 
