@@ -18,12 +18,11 @@ class TBT
         node* getRoot();
         void create(string);
         node* add(node*, node*);
+        void del(string);
+        void search(string);
         void displayInorder(node*);
         void displayPreorder(node*);
         void displayPostorder(node*);
-        void del(string);
-        void update(string);
-        void search(string);
 };
 
 TBT::TBT()

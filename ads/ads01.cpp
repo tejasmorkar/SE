@@ -16,12 +16,12 @@ class Dictionary
         node* getRoot();
         void create(string, string);
         node* add(node*, node*);
-        void displayInorder(node*);
-        void displayRevInorder(node*);
         void del(string);
         void update(string);
         void search(string);
         void sort(string);
+        void displayInorder(node*);
+        void displayRevInorder(node*);
         void maxComp(string);
 };
 
