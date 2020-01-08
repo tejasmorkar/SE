@@ -43,10 +43,12 @@ void Dictionary::create(string k, string m)
     nn->ln = NULL;
     nn->rn = NULL;
     
-   	add(root, nn);
-   	
-   	if(root == NULL)
-   		root = nn;
+    if(root == NULL)
+    {
+        root = nn;
+    }
+    else
+   	    add(root, nn);
 }
 
 node* Dictionary::add(node *temp, node *nn)
@@ -57,13 +59,13 @@ node* Dictionary::add(node *temp, node *nn)
     }
     else
     {
-        if(nn->keyword < temp->keyword)
+        if(nn->keyword.compare(temp->keyword) < 0)
         {
-            temp->ln = add(temp, nn);
+            temp->ln = add(temp->ln, nn);
         }
-        else if (nn->keyword > temp->keyword)
+        else if (nn->keyword.compare(temp->keyword) > 0)
         {
-            temp->rn = add(temp, nn);
+            temp->rn = add(temp->rn, nn);
         }
         else
         {
@@ -78,7 +80,7 @@ void Dictionary::displayInorder(node *cn)
     if(cn != NULL)
     {
         displayInorder(cn->ln);
-        cout << cn->keyword << ": " << cn->meaning;
+        cout << cn->keyword << ": " << cn->meaning << endl;
         displayInorder(cn->rn);
     }
 }
