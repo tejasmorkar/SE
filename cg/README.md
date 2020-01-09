@@ -1,6 +1,6 @@
 # Computer Graphics Lab
 
-+ [Getting Started](https://raw.githubusercontent.com/tejasmorkar/SE/master/cg/cg00.cpp)
++ [Getting Started](https://raw.githubusercontent.com/tejasmorkar/SE/master/cg/cg00.cpp){:target="_blank"}
 
-+ [Assignment 1](https://raw.githubusercontent.com/tejasmorkar/SE/master/cg/cg01.cpp)
++ [Assignment 1](https://raw.githubusercontent.com/tejasmorkar/SE/master/cg/cg01.cpp){:target="_blank"}
 
