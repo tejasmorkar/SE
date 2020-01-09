@@ -8,3 +8,7 @@
 
 + [Assignment 2B](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml02b.asm){:target="_blank"}
 
++ [Assignment 2C](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml02c.asm){:target="_blank"}
+
++ [Assignment 2D](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml02d.asm){:target="_blank"}
+
