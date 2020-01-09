@@ -1,11 +1,11 @@
 # SE Programs
 Programs for all SE lab assignments
 
-+ [ADS](./ads/)
++ [Advanced Data Structures Lab](./ads/)
 
-+ [Computer Graphics](./cg/)
++ [Computer Graphics Lab](./cg/)
 
-+ [Micro Processor Lab](./ml/)
++ [Microprocessor Lab](./ml/)
 
 ---
 
