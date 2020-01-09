@@ -49,9 +49,7 @@ section .text
 		CALL display_block
 		
 		PRINT br, br_len
-		MOV rsi, sblock
-		MOV rdi, dblock
-		transfer_block
+		CALL transfer_block
 		
 		PRINT msg2, msg2_len
 		PRINT msg3, msg3_len
@@ -103,6 +101,8 @@ section .text
  	
  	transfer_block:
 		MOV rcx, 5
+		MOV rsi, sblock
+		MOV rdi, dblock
 		nxt:
  			MOV al, [rsi]
  			MOV [rdi], al

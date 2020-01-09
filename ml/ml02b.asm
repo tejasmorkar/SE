@@ -1,7 +1,7 @@
-;Block Transfer non Overlapped without String Instruction
+;Block Transfer non Overlapped with String Instruction
 
 section .data
-	msg0 db 10, "Assignment No. 2A", 10, "---------------------------------------------", 10, "Block Transfer non Overlapped without String Instruction", 10
+	msg0 db 10, "Assignment No. 2B", 10, "---------------------------------------------", 10, "Block Transfer non Overlapped with String Instruction", 10
 	msg0_len equ $-msg0
 	msg1 db 10, "Before Transfer"
 	msg1_len equ $-msg1
@@ -103,12 +103,7 @@ section .text
 		MOV rcx, 5
 		MOV rsi, sblock
 		MOV rdi, dblock
-		nxt:
- 			MOV al, [rsi]
- 			MOV [rdi], al
- 			INC rsi
- 			INC rdi
- 			DEC rcx
- 			JNZ nxt
+		CLD
+		REP MOVSB
  		ret
 
