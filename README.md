@@ -9,4 +9,5 @@ Programs for all SE lab assignments
 
 ---
 
-> Made by - [@tejasmorkar](https://github.com/tejasmorkar){:target="_blank"}
+> Maintained by - [@tejasmorkar](https://github.com/tejasmorkar){:target="_blank"}
+
