@@ -14,8 +14,8 @@ section .data
 	br db 10, 10
 	br_len equ $-br
 	space db " "
-	sblock db 11h,22h,33h,44h,55h
-	dblock times 3 db 0
+	sblock db 10h, 11h, 12h, 13h, 14h, 15h, 16h, 17h, 18h, 19h
+	dblock times 4 db 0
 	
 section .bss
 	char_ans resb 2
@@ -45,7 +45,7 @@ section .text
 		CALL display_block
 		
 		PRINT msg4, msg4_len
-		MOV rsi, dblock-2
+		MOV rsi, dblock-6
 		CALL display_block
 		
 		PRINT br, br_len
@@ -57,7 +57,7 @@ section .text
 		CALL display_block
 		
 		PRINT msg4, msg4_len
-		MOV rsi, dblock-2
+		MOV rsi, dblock-6
 		CALL display_block
 		
 		PRINT br, br_len
@@ -65,7 +65,7 @@ section .text
  		EXIT
  		
  	display_block:
- 		MOV rbp, 5
+ 		MOV rbp, 10
  		
  		next_num:
  			MOV al, [rsi]
@@ -100,9 +100,9 @@ section .text
  		ret
  	
  	transfer_block:
-		MOV rcx, 5
-		MOV rsi, sblock+4
-		MOV rdi, dblock+2
+		MOV rcx, 10
+		MOV rsi, sblock+9
+		MOV rdi, dblock+3
 		STD
 		REP MOVSB
  		ret
