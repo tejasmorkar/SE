@@ -1,8 +1,8 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
-struct node 
+struct node
 {
     string data;
     struct node *ln, *rn;
@@ -12,17 +12,18 @@ struct node
 class TBT
 {
     node *dummy, *root;
-    public:
-        TBT();
-        node* getDummy();
-        node* getRoot();
-        void create(string);
-        node* add(node*, node*);
-        void del(string);
-        void search(string);
-        void displayInorder(node*);
-        void displayPreorder(node*);
-        void displayPostorder(node*);
+
+public:
+    TBT();
+    node *getDummy();
+    node *getRoot();
+    void create(string);
+    node *add(node *, node *);
+    void del(string);
+    void search(string);
+    void displayInorder(node *);
+    void displayPreorder(node *);
+    void displayPostorder(node *);
 };
 
 TBT::TBT()
@@ -31,19 +32,19 @@ TBT::TBT()
     root = NULL;
 }
 
-node* TBT::getDummy()
+node *TBT::getDummy()
 {
     return dummy;
 }
 
-node* TBT::getRoot()
+node *TBT::getRoot()
 {
     return root;
 }
 
 void TBT::create(string d)
 {
-    if(root == NULL)
+    if (root == NULL)
     {
         root = new node;
         root->data = d;
@@ -54,31 +55,31 @@ void TBT::create(string d)
     }
     else
     {
-        node* cn = root;
-        while(true)
+        node *cn = root;
+        while (true)
         {
-            if(d.compare(cn->data) < 0)
+            if (d.compare(cn->data) < 0)
             {
-                if(!cn->lt)
+                if (!cn->lt)
                     cn = cn->ln;
                 else
-                    break;                
+                    break;
             }
-            else if(d.compare(cn->data) > 0)
+            else if (d.compare(cn->data) > 0)
             {
-                if(!cn->rt)
+                if (!cn->rt)
                     cn = cn->rn;
                 else
                     break;
             }
-            else 
+            else
                 cout << "This data already exists\n\n";
-                return;
+            return;
         }
 
-        node* nn = new node;
+        node *nn = new node;
         nn->data = d;
-        if(d.compare(cn->data) < 0)
+        if (d.compare(cn->data) < 0)
         {
             nn->ln = cn->ln;
             nn->lt = true;
@@ -93,12 +94,28 @@ void TBT::create(string d)
             nn->lt = true;
         }
     }
-    
 }
 
 void TBT::displayInorder(node *cn)
 {
-    
+    while (cn != dummy)
+    {
+        while (!cn->lt)
+        {
+            cn = cn->ln;
+        }
+        cout << cn->data << " ";
+        if (cn->rt)
+        {
+            cn = cn->rn;
+            cout << cn->data << " ";
+            cn = cn->rn;
+        }
+        else
+        {
+            cn = cn->rn;
+        }
+    }
 }
 
 int main()
@@ -115,36 +132,35 @@ int main()
         cout << "5. Display PreOrder\n";
         cout << "6. Display PostOrder\n";
         cout << "7. Exit\n";
-     	cout << "Enter your choice: ";
+        cout << "Enter your choice: ";
         cin >> ch;
         cout << endl;
-        
-        switch(ch)
+
+        switch (ch)
         {
-        	case 1: // add
-        		cout << "Enter the data: ";
-        		cin >> d;
-        		T.create(d);
-        		break;
-        	case 2: // delete
-        		break;
-        	case 3: // search
-        		break;
-        	case 4: // inorder
-        		T.displayInorder(T.getRoot());
-        		break;
-        	case 5: // preorder
-        		break;
-        	case 6: // postorder
-        		break;
-        	case 7: // exit
-                cout << "Exit status: Success\n\n";
-        		break;
-        	default: // ch out of bound
-        		cout << "Please enter your choice between 1 - 7, only!\n\n";
+        case 1: // add
+            cout << "Enter the data: ";
+            cin >> d;
+            T.create(d);
+            break;
+        case 2: // delete
+            break;
+        case 3: // search
+            break;
+        case 4: // inorder
+            T.displayInorder(T.getRoot());
+            break;
+        case 5: // preorder
+            break;
+        case 6: // postorder
+            break;
+        case 7: // exit
+            cout << "Exit status: Success\n\n";
+            break;
+        default: // ch out of bound
+            cout << "Please enter your choice between 1 - 7, only!\n\n";
         }
-    }while(ch != 7);
-    
+    } while (ch != 7);
+
     return 0;
 }
-
