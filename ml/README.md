@@ -12,6 +12,8 @@
 
 + [Assignment 2D](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml02d.asm){:target="_blank"}
 
++ [Assignment 3](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml03.asm){:target="_blank"}
+
 ---
 
 > Maintained by - [@tejasmorkar](https://github.com/tejasmorkar){:target="_blank"}
