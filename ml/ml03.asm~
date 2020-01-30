@@ -77,8 +77,7 @@ section .text
 		c2:	
 			CMP	AL, '2'
 			JNE	c3
-			PRINT bmsg, bmsg_len
-			;CALL BCD_HEX
+			CALL BCD_HEX
 			JMP	MENU
 
 		c3:	
