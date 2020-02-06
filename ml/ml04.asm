@@ -134,8 +134,8 @@ ASM:
 	RET
 
 DISPLAY:				
-	MOV	RSI,char_ans+1
-	MOV	RCX,2        
+	MOV	RSI,char_ans+3
+	MOV	RCX,4        
 	MOV	RBX,16			
 
 	next_digit:
@@ -154,7 +154,7 @@ DISPLAY:
 		DEC	RCX
 		JNZ	next_digit
 
-		PRINT char_ans,2
+		PRINT char_ans,4
 	RET
 
 ACCEPT:			
@@ -167,15 +167,6 @@ ACCEPT:
 	next_byte:
 		SHL	BX,4
 		MOV	AL,[RSI]
-	
-		CMP	AL,'0'
-		JB	error
-		CMP	AL,'9'
-		JBE	sub30
-
-	error:
-		PRINT emsg, emsg_len
-		EXIT
 	
 	sub30:	
 		SUB	AL,30H
