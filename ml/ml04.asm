@@ -1,4 +1,4 @@
-;Conversion From HEX to BCD and BCD to HEX Number
+;Multiplication of two 16 bit numbers
 
 section .data
     br db 10,10
@@ -26,10 +26,13 @@ section .data
 	emsg_len equ $-emsg
 
 section .bss
-	buf resB 6
-	char_ans resB 4
-	ans resW 1
-	
+	buf resb 4
+	n1 resw 1
+	n2 resw 1
+	ansl resw 1
+	ansh resw 1
+	ans resd 1
+	char_ans resb 4
 
 %MACRO PRINT 2
 	MOV RAX, 1
@@ -46,7 +49,6 @@ section .bss
 	MOV RDX, %2
 	SYSCALL
 %ENDMACRO
-
 
 %MACRO EXIT 0
 	PRINT br, br_len
@@ -89,26 +91,51 @@ section .text
 		JMP	MENU
 
 SA:
+	MOV word[ansl], 00
+	MOV word[ansh], 00
 	PRINT m1msg,m1msg_len
-	CALL Accept_16		
+	CALL ACCEPT
+	MOV [n1], bx
 	
 	PRINT m2msg,m2msg_len
-	CALL Accept_16
+	CALL ACCEPT
+	MOV [n2], bx
+	
+	MOV ax, [n1]
+	MOV cx, [n2]
+	CMP cx, 0
+	JE FINAL
+	
+	BACK:
+		ADD [ansl], ax
+		JNC NEXT
+		INC word[ansh]
+	
+	NEXT:
+		DEC cx
+		JNZ BACK
+	
+	FINAL:
+		PRINT pmsg, pmsg_len
+		MOV ax, [ansh]
+		call DISPLAY
+		MOV ax, [ansl]
+		CALL DISPLAY
 		
 	RET
 
 ASM:
 	PRINT m1msg,m1msg_len
-	CALL Accept_16		
+	CALL ACCEPT		
 	
 	PRINT m2msg,m2msg_len
-	CALL Accept_16
+	CALL ACCEPT
 	
 	RET
 
-Disp_16:				
-	MOV	RSI,char_ans+3
-	MOV	RCX,4           
+DISPLAY:				
+	MOV	RSI,char_ans+1
+	MOV	RCX,2        
 	MOV	RBX,16			
 
 	next_digit:
@@ -127,13 +154,13 @@ Disp_16:
 		DEC	RCX
 		JNZ	next_digit
 
-		PRINT char_ans,4
+		PRINT char_ans,2
 	RET
 
-Accept_16:			
-	READ buf, 5
+ACCEPT:			
+	READ buf, 3
 
-	MOV	RCX,4
+	MOV	RCX,2
 	MOV	RSI,buf
 	XOR	BX,BX
 
@@ -146,25 +173,9 @@ Accept_16:
 		CMP	AL,'9'
 		JBE	sub30
 
-		CMP	AL,'A'
-		JB	error
-		CMP	AL,'F'
-		JBE	sub37
-	
-		CMP	AL,'a'
-		JB	error
-		CMP	AL,'f'
-		JBE	sub57
-
 	error:
 		PRINT emsg, emsg_len
 		EXIT
-
-	sub57:	
-		SUB	AL,20H
-	
-	sub37:	
-		SUB	AL,07H
 	
 	sub30:	
 		SUB	AL,30H
