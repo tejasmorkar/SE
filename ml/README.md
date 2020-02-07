@@ -16,6 +16,8 @@
 
 + [Assignment 4](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml04.asm){:target="_blank"}
 
++ [Assignment 5](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml05.asm){:target="_blank"}
+
 ---
 
 > Maintained by - [@tejasmorkar](https://github.com/tejasmorkar){:target="_blank"}
