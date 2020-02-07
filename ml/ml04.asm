@@ -27,7 +27,7 @@ section .data
 
 	emsg		db	10,"INVALID NUMBER INPUT",10
 	emsg_len	equ	$-emsg
-;------------------------------------------------------------------------------
+
 section .bss
 	buf	resB	5
 	buf_len	equ	$-buf
@@ -41,8 +41,6 @@ section .bss
 	ans	resD	1	
 
 	char_ans resB	4
-	
-;-----------------------------------------------------------------------------
 
 %macro	Print	2
 	 MOV	RAX,1
@@ -66,8 +64,7 @@ section .bss
 	MOV	RAX,60
         MOV	RDI,0
     syscall
-%endmacro
-;---------------------------------------------------------------       
+%endmacro     
 
 section .text
 	global _start
@@ -96,7 +93,7 @@ c3:	cmp	al,'3'
 
 invalid:Print	emsg,emsg_len
 	jmp	Menu
-;-----------------------------------------------------------
+
 SA:	
 	mov	word[ansh],00	;for next time use
 	mov	word[ansl],00
@@ -129,8 +126,8 @@ final:
 	mov	ax,[ansl]
 	call	Disp_16
 
-RET
-;-----------------------------------------------------------	
+Ret
+
 AD_SH:
 	
 
@@ -167,14 +164,9 @@ next1:
 	Print	shmsg,shmsg_len
 	mov	eax,[ans]
 	call	Disp_32
-
-
-
-
 	
-RET			
+Ret
 
-;---------------------------------------------------------------
 Disp_16:
 	MOV	RSI,char_ans+3
 	MOV	RCX,4           ;counter
@@ -198,7 +190,7 @@ add30	:
 
 	Print	char_ans,4
 ret
-;-------------------------------------------------------------------
+
 Disp_32:
 	MOV	RSI,char_ans+7
 	MOV	RCX,8           ;counter
@@ -222,7 +214,7 @@ add301	:
 
 	Print	char_ans,8
 ret
-;-------------------------------------------------------------------
+
 Accept_16:
 	Read	buf,buf_len
 
@@ -264,5 +256,4 @@ sub30:	SUB	AL,30H
 	JNZ	next_byte
 		
 ret
-;-----------------------------------------------------------------------------------------
 
