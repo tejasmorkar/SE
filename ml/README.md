@@ -16,7 +16,7 @@
 
 + [Assignment 4](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml04.asm){:target="_blank"}
 
-+ [Assignment 5](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml05){:target="_blank"}
++ [Assignment 5](../ml05/){:target="_blank"}
 
 ---
 
