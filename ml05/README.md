@@ -1,0 +1,15 @@
+# Microprocessor Lab Assignment 5
+Programs for all SE lab assignments
+
++ [Main File](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml05/A5_file1.asm){:target="_blank"}
+
+
++ [Far Procedure File](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml05/A5_file2.asm){:target="_blank"}
+
++ [Micros File](https://raw.githubusercontent.com/tejasmorkar/SE/master/ml/ml05/marco.asm){:target="_blank"}
+
+---
+
+> Maintained by - [@tejasmorkar](https://github.com/tejasmorkar){:target="_blank"}
+
+
